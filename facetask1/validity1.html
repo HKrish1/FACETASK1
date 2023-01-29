@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1DBF73;
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 1100px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.code-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+</style>
+</head>
+<body><center>
+    <div class="container">
+    <span>RECORD YOUR GAME HERE ELSE PRESS RETURN</span><br><br>
+    <div class="code-container">
+    Name:<input id="name1" type="text">
+    Score:<input id="name2" type="text">
+    <input type="button" value="Save" onclick="func_savedata()"><br><br>
+    <input type="button" value="Return" onclick="window.location.href = 'addi1.html';">
+    </div>
+    </div>
+</center></body>
+</html>
+<script>   
+function func_savedata(data){
+var first=document.getElementById("name1").value;
+var last=document.getElementById("name2").value;
+var data= [];
+data.push(first);
+data.push(last);
+var string_data = JSON.stringify(data);
+var file = new Blob([string_data], {type:'text'});
+var anchor = document.createElement('a');
+anchor.href = URL.createObjectURL(file);
+anchor.download = 'save.txt';
+anchor.click();
+}
+</script>
